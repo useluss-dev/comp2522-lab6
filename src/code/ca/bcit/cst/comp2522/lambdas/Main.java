@@ -1,42 +1,48 @@
 package ca.bcit.cst.comp2522.lambdas;
 
-import java.util.*;
-import java.util.function.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 /**
  * The main driver class that demonstrates the functionality of HockeyPlayer and HockeyTeam classes.
+ *
  * @author Ryan Fiset, Larry Lin
  * @version 1.0
  */
 public class Main
 {
-
     private static final int CURRENT_YEAR = 2025;
 
     private static final int GOALS_ALEX_MORGAN = 21;
-    private static final int GOALS_BEN_CARTER = 6;
+    private static final int GOALS_BEN_CARTER  = 6;
     private static final int GOALS_CASEY_YOUNG = 28;
-    private static final int GOALS_DREW_SINGH = 0;
-    private static final int GOALS_EVA_CHEN = 5;
-    private static final int GOALS_FRANK_LEE = 15;
+    private static final int GOALS_DREW_SINGH  = 0;
+    private static final int GOALS_EVA_CHEN    = 5;
+    private static final int GOALS_FRANK_LEE   = 15;
 
     private static final int BRITH_ALEX_MORGAN = 2002;
-    private static final int BRITH_BEN_CARTER = 1999;
+    private static final int BRITH_BEN_CARTER  = 1999;
     private static final int BRITH_CASEY_YOUNG = 2004;
-    private static final int BRITH_DREW_SINGH = 2000;
-    private static final int BRITH_EVA_CHEN = 2001;
-    private static final int BRITH_FRANK_LEE = 1998;
+    private static final int BRITH_DREW_SINGH  = 2000;
+    private static final int BRITH_EVA_CHEN    = 2001;
+    private static final int BRITH_FRANK_LEE   = 1998;
 
-    private static final String CALL_UP_NAME = "New Player";
+    private static final String CALL_UP_NAME     = "New Player";
     private static final String CALL_UP_POSITION = "F";
-    private static final int CALL_UP_YEAR = 2000;
-    private static final int CALL_UP_GOALS = 10;
+    private static final int    CALL_UP_YEAR     = 2000;
+    private static final int    CALL_UP_GOALS    = 10;
 
-    private static final int MIN_ELIGIBLE_AGE = 20;
+    private static final int MIN_ELIGIBLE_AGE   = 20;
     private static final int MIN_ELIGIBLE_GOALS = 15;
 
-    private static final int ZERO_START = 0;
-    private static final int GOAL_THRESHOLD = 20;
+    private static final int    ZERO_START       = 0;
+    private static final int    GOAL_THRESHOLD   = 20;
     private static final String FORWARD_POSITION = "F";
 
     /**
@@ -66,8 +72,9 @@ public class Main
     public static void main(final String[] args)
     {
         final HockeyTeam team;
-        team = sampleTeam();
         final List<HockeyPlayer> roster;
+
+        team   = sampleTeam();
         roster = team.getRoster();
 
         // 1) Supplier — create a call-up and add it
@@ -164,7 +171,8 @@ public class Main
             return age >= minAge && player.getGoals() >= minGoals;
         };
 
-        System.out.println("Eligible Players (minAge = " + MIN_ELIGIBLE_AGE + ", minGoals = " + MIN_ELIGIBLE_GOALS + "):");
+        System.out.println("Eligible Players (minAge = " + MIN_ELIGIBLE_AGE + ", minGoals = " + MIN_ELIGIBLE_GOALS +
+                           "):");
         for (final HockeyPlayer player : roster)
         {
             if (isEligible.test(player, MIN_ELIGIBLE_AGE, MIN_ELIGIBLE_GOALS, CURRENT_YEAR))

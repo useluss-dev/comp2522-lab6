@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Represents a hockey team with a name and a roster of players.
+ *
  * @author Ryan Fiset, Larry Lin
  * @version 1.0
  */
@@ -21,6 +22,9 @@ public class HockeyTeam
     public HockeyTeam(final String name,
                       final List<HockeyPlayer> roster)
     {
+        Validator.validateString(name, "name");
+        Validator.validateList(roster, "roster");
+
         this.name   = name;
         this.roster = roster;
     }
@@ -30,7 +34,8 @@ public class HockeyTeam
      *
      * @return the team's name
      */
-    public String getName() {
+    public String getName()
+    {
         // Returns the name of the hockey team
         return name;
     }
@@ -40,7 +45,8 @@ public class HockeyTeam
      *
      * @return the list of players in the team
      */
-    public List<HockeyPlayer> getRoster() {
+    public List<HockeyPlayer> getRoster()
+    {
         // Returns the roster of hockey players in the team
         return roster;
     }

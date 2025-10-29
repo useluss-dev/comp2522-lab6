@@ -2,15 +2,20 @@ package ca.bcit.cst.comp2522.lambdas;
 
 /**
  * Represents a hockey player with a name, position, year of birth, and goals scored.
+ *
  * @author Ryan Fiset, Larry Lin
  * @version 1.0
  */
 public class HockeyPlayer
 {
+    private final static int MIN_YEAR_BIRTH = 1995;
+    private final static int MAX_YEAR_BIRTH = 2005;
+    private final static int MIN_GOALS      = 0;
+
     private final String name;
     private final String position; // "F", "D", or "G"
-    private final int yearOfBirth;
-    private final int goals;
+    private final int    yearOfBirth;
+    private final int    goals;
 
     /**
      * Constructs a HockeyPlayer with the specified name, position, year of birth, and goals.
@@ -25,6 +30,11 @@ public class HockeyPlayer
                         final int yearOfBirth,
                         final int goals)
     {
+        Validator.validateString(name, "name");
+        Validator.validateString(position, "position");
+        Validator.validateIntInRange(yearOfBirth, MIN_YEAR_BIRTH, MAX_YEAR_BIRTH, "yearOfBirth");
+        Validator.validateIntGreaterThan(goals, MIN_GOALS, "goals");
+
         this.name        = name;
         this.position    = position;
         this.yearOfBirth = yearOfBirth;
